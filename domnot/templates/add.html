@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Дом нот{% endblock title %}
+{% block content %}
+    <main>   
+      <section class="container my-5">
+        <div class="row">
+          <h2>Добавить новую поставку:</h2>
+          <div class="col-12 col-lg-8 my-5">   
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link" href="">Заполнить автоматически:</a>
+              </li>
+              <li class="nav-item pe-2">              
+                <a class="nav-link active" href="{{ url_for('add_grahl') }}">
+                  Grahl
+                </a>
+              </li>
+              <li class="nav-item pe-2">              
+                <a class="nav-link active" href="add.html">
+                  Baerenreiter
+                </a>
+              </li>
+              <li class="nav-item pe-2">              
+                <a class="nav-link active" href="add.html">
+                  Petz
+                </a>
+              </li>
+            </ul>      
+            <br>       
+            <form method="POST" novalidate> 
+              {{ form.csrf_token }}
+              {{ form.company_name(class="form-control form-control-lg py-3 mb-2", placeholder=form.company_name.label.text) }}<br />
+              {% if form.company_name.errors %}
+      <p class="text-danger">
+        {% for error in form.company_name.errors %}
+                {{ error }}
+        {% endfor %}
+      </p>
+  {% endif %}
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  {% for message in messages %}
+                    <!-- Какие-то действия с текстом сообщения, например вывод на страницу -->
+                    {{ message }}
+                  {% endfor %}
+                {% endif %}
+              {% endwith %} 
+              {{ form.number(class="form-control form-control-lg py-3 mb-2", placeholder=form.number.label.text) }}<br />
+              {{ form.weight(class="form-control form-control-lg py-3 mb-2", placeholder=form.weight.label.text) }}<br />
+              {{ form.track_number(class="form-control form-control-lg py-3 mb-2", placeholder=form.track_number.label.text) }}<br />
+              {{ form.price(class="form-control form-control-lg py-3 mb-2", placeholder=form.price.label.text) }}<br />
+              {{ form.meest_price(class="form-control form-control-lg py-3 mb-2", placeholder=form.meest_price.label.text) }}<br />
+              {{ form.clients(class="form-control form-control-lg py-3 mb-2", placeholder=form.clients.label.text) }}<br />
+              {{ form.status(class="form-control form-control-lg py-3 mb-2", placeholder=form.status.label.text) }}<br />
+              {{ form.comments(class="form-control form-control-lg py-3 mb-2", placeholder=form.comments.label.text) }}<br />
+              {{ form.submit }}
+            </form>
+          </div>
+          <!-- <div class="col-12 col-lg-5">
+            <img class="img-fluid mx-auto d-block" src="static/img/illustration.png" alt="">
+          </div> -->
+        </div>
+      </section>
+    </main>
+{% endblock %}
+{% include "footer.html" %}

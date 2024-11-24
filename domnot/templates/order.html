@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}О доставке{% endblock title %}
+{% block content %}
+<main>
+    <br>
+    <br>
+    <div class="container text-left">
+    <h4>Подробнее о заказе:</h4>
+</div>
+    <br>
+    <section class="container my-4">
+    <div class="container text-left">
+        <div class="row">
+            <p class="fixed-bottom text-left py-3 bg-light">
+          <div class="col-sm-4"><h5>Дата создания:</h5></div>
+          <div class="col-sm-6"><p>{{order.timestamp.strftime("%d.%m.%Y %H:%M")}}</p></div>
+        </p>
+        </div>
+        <div class="row">
+            <p class="fixed-bottom text-left py-3 bg-light">
+          <div class="col-sm-4"><h5>Статус посылки:</h5></div>
+          <div class="col-sm-6"><p>{{order.status}}</p></div>
+        </p>
+        </div>
+        <div class="row">
+            <p class="fixed-bottom text-left py-3 bg-light">
+          <div class="col-sm-4"><h5>Поставщик:</h5></div>
+          <div class="col-sm-4 text-left"><p>{{order.company_name}}</p></div>
+        </p>
+        </div>
+        <div class="row">
+            <p class="fixed-bottom text-left py-3 bg-light">
+          <div class="col-sm-4"><h5>Номер инвойса:</h5></div>
+          <div class="col-sm-4"><p>{{order.number}}</p></div>
+        </p>
+        </div>
+        <div class="row">
+            <p class="fixed-bottom text-left py-3 bg-light">
+          <div class="col-sm-4"><h5>Трек номер:</h5></div>
+          <div class="col-sm-4"><p>{{order.track_number}}</p></div>
+        </p>
+        </div>
+        <div class="row">
+            <p class="fixed-bottom text-left py-3 bg-light">
+          <div class="col-sm-4"><h5>Общий вес:</h5></div>
+          <div class="col-sm-4"><p>{{order.weight}}</p></div>
+        </p>
+        </div>
+        <div class="row">
+            <p class="fixed-bottom text-left py-3 bg-light">
+          <div class="col-sm-4"><h5>Стоимость посылки:</h5></div>
+          <div class="col-sm-4"><p>{{order.price}}</p></div>
+        </p>
+        </div>
+        <div class="row">
+            <p class="fixed-bottom text-left py-3 bg-light">
+          <div class="col-sm-4"><h5>Дата отправки Meest:</h5></div>
+          <div class="col-sm-4"><p>{{order.meest_date}}</p></div>
+        </p>
+        </div>
+        <div class="row">
+            <p class="fixed-bottom text-left py-3 bg-light">
+          <div class="col-sm-4"><h5>Стоимость пересылки Meest:</h5></div>
+          <div class="col-sm-4"><p>{{order.meest_price}}</p></div>
+        </p>
+        </div>
+        <div class="row">
+            <p class="fixed-bottom text-left py-3 bg-light">
+          <div class="col-sm-4"><h5>Получатели посылок:</h5></div>
+          <div class="col-sm-4"><p>{{order.clients}}</p></div>
+        </p>
+        </div>
+        <div class="row">
+            <p class="fixed-bottom text-left py-3 bg-light">
+          <div class="col-sm-4"><h5>Комментарии:</h5></div>
+          <div class="col-sm-4"><p>{{order.comments}}</p></div>
+        </p>
+        </div>
+    </div>
+</section>
+</main>
+{% endblock %}

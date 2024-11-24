@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Дом нот{% endblock title %}
+{% block content %}
+    <main>
+      <section class="container my-5">
+        <div class="row">
+          <h2>Список доставок</h2>
+          {% if quantity %}
+          <p>Общее количество поставок: {{ quantity }}</p>
+          {% endif %}
+          <div class="col-1 col-lg-9 my-3">            
+            <p>
+              {% for order in orders %}
+              <!--  --> 
+              <div class="container">
+                <ul class="nav nav-pills">
+                  <li class="nav-item pe-3">              
+                    <p><a class="nav-item pe-3" style="color:rgb(10, 189, 168)" href="{{ url_for('order_view', id=order.id) }}">{{order.timestamp.date().strftime("%d.%m.%Y")}}</a></p>
+                  </li>
+                  <li class="nav-item pe-3">
+                    <p>{{order.company_name}}</p>
+                    </li>
+                    <li class="nav-item pe-3">
+                      <p>{{order.number}}</p>
+                    </li>
+                    <li class="nav-item pe-3">
+                      <p>{{order.price}}</p>
+                    </li>
+                    <li class="nav-item pe-3">
+                      <p>{{order.status}}</p>
+                    </li>
+                   
+                </ul>            
+              </div> 
+              <!--  -->
+              {% endfor %}
+            <p>
+              <!-- Больше о фильме:  -->
+              <a href=""></a>
+            </p>
+            <p>
+              <!-- Ссылка для друзей:  -->
+              <a href=""></a>
+            </p>
+          </div>
+          <div class="col-12 col-lg-5">
+            <!-- <img class="img-fluid mx-auto d-block" src="static/img/illustration.png" alt=""> -->
+          </div>
+        </div>
+      </section>
+    </main>
+    {% endblock %}
+    {% include "footer.html" %}

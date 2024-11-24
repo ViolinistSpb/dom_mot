@@ -1,0 +1,39 @@
+<header class="pt-3">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('index_view') }}">            
+          <img src="static/img/fav/icon_domnot.png" height="50" class="" alt="">                       
+        </a>  
+        <div class="d-flex justify-content-end">
+          <ul class="nav nav-pills">
+            <li class="nav-item">              
+              <a 
+              {% if request.url_rule.endpoint  == 'add_order' %}
+                  class="nav-link active"
+                {% else %} class="nav-link"
+              {% endif %} href="{{ url_for('add_order') }}">
+                Добавить новую поставку
+              </a>
+            </li>
+            <li class="nav-item">
+              <a 
+                {% if request.url_rule.endpoint  == 'index_view' %}
+                  class="nav-link active"
+                {% else %} class="nav-link"
+                {% endif %}
+              href="{{ url_for('index_view') }}">
+                Список поставок
+              </a>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.dhl.de/de/privatkunden.html">Dhl tracking</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://track24.ru/service/rupost/tracking/">Трекинг по России</a>
+              </li>
+            </li>
+          </ul>            
+        </div>       
+      </div>
+    </nav>       
+  </header>
